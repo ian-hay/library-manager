@@ -1,2 +1,3 @@
-# library-manager
+Ian Hay
 Library Management System
+
