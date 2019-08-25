@@ -30,8 +30,7 @@ public interface ILibrary {
 	 * Returns true or false depending on if this item has been checked out.
 	 * @return the boolean value for isCheckedOut
 	 */
-	//CS 1120 Spring 2019 LA3 Library Catalog System
-//	6
+	
 	 public boolean isCheckedOut();
 	 /**
 	 * Returns the date this item was checked out.
