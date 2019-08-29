@@ -29,7 +29,7 @@ public class Book extends Library {
 	
 	public void checkOut() {
 		checkedOut =true;
-		
+		System.out.println(toString());
 		
 	}
 	
