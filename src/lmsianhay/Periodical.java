@@ -9,10 +9,10 @@ public class Periodical extends Library {
 	
 	String[] fields = new String[6];
 	String code, title,volume,issue,genre;
-	
+	String checked="NO";
 	GregorianCalendar gcal;
 	
-	
+	GregorianCalendar cal;
 	
 	public Periodical(String line) {
 		
@@ -28,7 +28,9 @@ public class Periodical extends Library {
 	public void checkOut() {
 		
 		checkedOut=true;
+		checked="YES";
 		gcal= new GregorianCalendar();
+		cal=new GregorianCalendar();
 		System.out.println(toString());
 	}
 	
@@ -36,7 +38,7 @@ public class Periodical extends Library {
 		 
 
     	
-    	return "Periodical Title: "+ title+ "\nVolume: "+ volume+ "\nIssue: "+issue+ "\nSubject: " + issue+ "\nCall Number: "+code+"\nChecked Out: "+checkedOut ;
+    	return "Periodical Title: "+ title+ "\nVolume: "+ volume+ "\nIssue: "+issue+ "\nSubject: " + issue+ "\nCall Number: "+code+"\nChecked Out: "+checked ;
 	 }
 	
 	public String getCallNumber() {
@@ -54,6 +56,7 @@ public class Periodical extends Library {
 
 		
 		dateDue = getDateDue();
+		System.out.printf("Date Out: %tD\n",cal);
 		System.out.printf("Date Due: %tD\n",dateDue);
 		
 	}

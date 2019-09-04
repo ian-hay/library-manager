@@ -15,19 +15,59 @@ public class Controller implements IController {
 	@Override
 	public void displayCollection() {
 		// TODO Auto-generated method stub
-
-		
+		for(int i=0;i<books.length;i++) {
+			System.out.println(books[i].toString()+"\n");
+		}
+		for(int i =0;i<pers.length;i++) {
+			System.out.println(pers[i].toString()+"\n");
+		}
 	}
 
 	@Override
 	public void checkoutMaterials() {
 		// TODO Auto-generated method stub
-
+		Scanner keyboard = new Scanner(System.in);
+		String callNum;
+		System.out.println("What is the call Number?");
+		callNum=keyboard.nextLine();
+		System.out.println();
+		
+		try {
+			if (!findItem(callNum).isCheckedOut()) {
+			findItem(callNum).checkOut();	
+			
+			//System.out.printf("Date Out: %tD\n", findItem(callNum).getDateCheckedOut()); 
+			
+			findItem(callNum).setDateDue(findItem(callNum).getDateCheckedOut());
+			}
+			else {
+				System.out.println("Item is not available.");
+			}
+			}
+			catch(NullPointerException e) {
+				System.out.println("Not a valid Call Number ");
+				checkoutMaterials();
+			}
+		
 	}
 
 	@Override
 	public ILibrary findItem(String callNum) {
 		// TODO Auto-generated method stub
+		for(int i=0; i<books.length;i++) {
+			if(books[i].getCallNumber().equals(callNum)) {
+				return books[i];
+			}
+		}
+		
+		for(int i=0;i<pers.length;i++) {
+			if(pers[i].getCallNumber().equals(callNum)) {
+				return pers[i];
+			}
+		}
+		
+		
+		
 		return null;
 	}
 

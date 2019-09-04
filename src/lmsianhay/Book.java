@@ -11,9 +11,10 @@ public class Book extends Library {
 	String author;
 	String code;
 	String genre;
-	
+	String chex;
 	boolean checkedOut= false;
 	GregorianCalendar gcal = new GregorianCalendar();
+	GregorianCalendar cal;
 	public Book(String line) {
 	
 		fields= line.split(",");
@@ -22,20 +23,22 @@ public class Book extends Library {
 		title=fields[2];
 		author=fields[3];
 		genre=fields[4];
-		
+		chex="NO";
 		
 		
 	}
 	
 	public void checkOut() {
 		checkedOut =true;
+		chex="YES";
+		cal= new GregorianCalendar();
 		System.out.println(toString());
 		
 	}
 	
 	public String toString() {
 		
-	 return  "Book Title: " + title + "\nAuthor: "+ author+ "\nGenre: " + genre + "\nCall Number: "+code+ "\nChecked Out: "+ checkedOut ;
+	 return  "Book Title: " + title + "\nAuthor: "+ author+ "\nGenre: " + genre + "\nCall Number: "+code+ "\nChecked Out: "+ chex ;
 	}
 	
 	public String getCallNumber() {
@@ -52,6 +55,7 @@ public class Book extends Library {
 
 		
 		dateDue = getDateDue();
+		System.out.printf("Date Out: %tD\n",cal);
 		System.out.printf("Date Due: %tD\n",dateDue);
 		
 	}
